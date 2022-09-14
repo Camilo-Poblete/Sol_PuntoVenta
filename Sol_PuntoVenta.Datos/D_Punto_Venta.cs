@@ -38,5 +38,7 @@ namespace Sol_PuntoVenta.Datos
             }
         }
 
+        //
+
     }
 }
