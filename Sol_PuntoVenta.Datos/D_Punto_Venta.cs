@@ -44,8 +44,15 @@ namespace Sol_PuntoVenta.Datos
             string Rpta = "";
             SqlConnection SqlCon = new SqlConnection();
             try
-            {
-
+            { 
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("USP_Guardar_pv", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@nOpcion", SqlDbType.Int).Value = nOpcion;
+                Comando.Parameters.Add("@nCodigo", SqlDbType.Int).Value = oPropiedad.Codigo_pv;
+                Comando.Parameters.Add("@cDescripcion", SqlDbType.VarChar).Value = oPropiedad.Descripcion_pv;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "Ok" : "No se pudo ingresar el registro";
             }
             catch (Exception ex)
             {
