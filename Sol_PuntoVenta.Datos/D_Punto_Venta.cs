@@ -33,12 +33,31 @@ namespace Sol_PuntoVenta.Datos
                 throw ex;
             }
             finally
+
             {
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
 
-        
+        public string Guardar_pv(int nOpcion, E_Punto_Venta oPropiedad)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+                Rpta= ex.Message;
+            }
+            finally
+            {
+                if(SqlCon.State== ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
         
     }
 }
